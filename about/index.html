@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QD7Y17RV8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8QD7Y17RV8');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — Shravankumar Hiregoudar</title>
@@ -88,7 +96,7 @@
     /* ── CANVAS ───────────────────────────────────────────────── */
     #cnv {
       position: fixed; inset: 0; z-index: 0;
-      opacity: .22; pointer-events: none;
+      opacity: .20; pointer-events: none;
     }
 
     /* ── AMBIENT GLOWS ────────────────────────────────────────── */
@@ -132,7 +140,7 @@
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-item { position: relative; }
     .nav-item > a {
-      color: var(--muted); text-decoration: none;
+      color: #c8c8de; text-decoration: none;
       font-size: .7rem; font-weight: 500;
       letter-spacing: .14em; text-transform: uppercase;
       transition: color .25s;
@@ -156,7 +164,7 @@
     }
     .nav-drop a {
       display: block; padding: .6rem 1.3rem;
-      color: var(--muted); text-decoration: none;
+      color: #c8c8de; text-decoration: none;
       font-size: .68rem; font-weight: 500;
       letter-spacing: .1em; text-transform: uppercase;
       transition: color .2s, background .2s;
@@ -181,9 +189,8 @@
 
     /* ── HERO ─────────────────────────────────────────────────── */
     .hero {
-      min-height: 100vh;
       display: flex; align-items: center;
-      padding: 8rem 4rem 5rem;
+      padding: 8rem 4rem 3rem;
       position: relative;
     }
     .hero-inner {
@@ -207,7 +214,7 @@
       background-clip: text;
     }
     .hero-bio {
-      font-size: 1rem; line-height: 1.8; color: var(--muted);
+      font-size: 1rem; line-height: 1.8; color: #c8c8de;
       max-width: 560px; margin-top: 2rem; margin-bottom: 2.5rem;
     }
     .hero-stats {
@@ -221,7 +228,7 @@
     }
     .hero-stat .lbl {
       font-size: .68rem; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--muted);
+      text-transform: uppercase; color: #c8c8de;
     }
     .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-primary {
@@ -242,7 +249,7 @@
       display: inline-flex; align-items: center; gap: .5rem;
       padding: .75rem 1.4rem;
       border: 1px solid var(--border);
-      color: var(--muted); font-family: var(--font-m);
+      color: #c8c8de; font-family: var(--font-m);
       font-size: .7rem; letter-spacing: .1em;
       text-decoration: none; text-transform: uppercase;
       border-radius: 6px; background: transparent;
@@ -363,7 +370,7 @@
     }
     .tl-date {
       font-family: var(--font-m); font-size: .62rem; letter-spacing: .08em;
-      color: var(--muted); text-transform: uppercase;
+      color: #c8c8de; text-transform: uppercase;
       padding-right: 1.6rem;
       line-height: 1.6;
     }
@@ -378,7 +385,7 @@
       background: var(--glass);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 1.8rem 2rem;
+      padding: 1.8rem 2rem 1.8rem 2rem;
       position: relative;
       overflow: hidden;
       transition: border-color .3s, transform .3s;
@@ -395,6 +402,31 @@
       transform: translateX(4px);
     }
 
+    /* ── COMPANY LOGO (corner, no box) ───────────────────────── */
+    .tl-logo-badge {
+      position: absolute;
+      top: 1.4rem; right: 1.6rem;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 2;
+      transition: transform .4s var(--ease), opacity .3s;
+    }
+    .tl-logo-badge a { display: block; cursor: pointer; }
+    .tl-logo-badge img {
+      display: block;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.5));
+      transition: transform .4s var(--ease), filter .3s;
+    }
+    .tl-logo-init {
+      font-family: var(--font-m);
+      font-size: .75rem; font-weight: 700; letter-spacing: .04em;
+      color: rgba(255,255,255,0.5);
+    }
+    .tl-card:hover .tl-logo-badge img {
+      transform: scale(1.08);
+      filter: drop-shadow(0 4px 14px var(--brand-shadow, rgba(0,0,0,.6)));
+    }
+
     .tl-company {
       font-family: var(--font-m); font-size: .8rem; letter-spacing: .12em;
       color: var(--amber); text-transform: uppercase;
@@ -404,7 +436,7 @@
       font-family: var(--font-h); font-size: 1.25rem; font-weight: 600;
       color: var(--text); margin-bottom: .3rem;
     }
-    .tl-sub { font-size: .82rem; color: var(--muted); margin-bottom: 1.2rem; }
+    .tl-sub { font-size: .82rem; color: #c8c8de; margin-bottom: 1.2rem; }
 
     /* Sub-roles within a job */
     .tl-subroles { display: flex; flex-direction: column; gap: 1.2rem; }
@@ -417,7 +449,7 @@
       list-style: none; display: flex; flex-direction: column; gap: .5rem;
     }
     .tl-bullets li {
-      font-size: .88rem; line-height: 1.65; color: var(--muted);
+      font-size: .88rem; line-height: 1.65; color: #c8c8de;
       padding-left: 1.2rem; position: relative;
     }
     .tl-bullets li::before {
@@ -479,7 +511,7 @@
     }
     .edu-meta {
       font-family: var(--font-m); font-size: .58rem; letter-spacing: .1em;
-      color: var(--muted); text-transform: uppercase; line-height: 2;
+      color: #c8c8de; text-transform: uppercase; line-height: 2;
       margin-bottom: 1.2rem;
     }
     .edu-divider {
@@ -487,21 +519,50 @@
     }
     .edu-courses {
       font-family: var(--font-m); font-size: .6rem; letter-spacing: .06em;
-      line-height: 1.95; color: var(--muted);
+      line-height: 1.95; color: #c8c8de;
     }
 
     /* ── SKILLS ───────────────────────────────────────────────── */
-    .skills-grid { display: flex; flex-direction: column; gap: 1.6rem; }
-    .skill-row {
-      display: grid; grid-template-columns: 140px 1fr;
-      gap: 1.5rem; align-items: baseline;
-      padding-bottom: 1.6rem;
-      border-bottom: 1px solid var(--border);
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
     }
-    .skill-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .skill-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem 1.5rem 1.5rem;
+      position: relative; overflow: hidden;
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+    }
+    .skill-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 0% 100%, rgba(245,160,10,.04) 0%, transparent 65%);
+      opacity: 0; transition: opacity .4s; pointer-events: none;
+    }
+    .skill-card:hover { border-color: rgba(245,160,10,.2); transform: translateY(-3px); }
+    .skill-card:hover::before { opacity: 1; }
+    .skill-card-wide { grid-column: span 2; }
     .skill-cat {
-      font-family: var(--font-m); font-size: .6rem; letter-spacing: .12em;
-      color: var(--amber); text-transform: uppercase; opacity: .8;
+      font-family: var(--font-m); font-size: .58rem; letter-spacing: .16em;
+      color: var(--amber); text-transform: uppercase; opacity: .85;
+      display: block; margin-bottom: .9rem;
+    }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .skill-chip {
+      font-family: var(--font-b); font-size: .8rem; font-weight: 500;
+      padding: .32rem .8rem; border-radius: 20px;
+      background: rgba(245,160,10,.05);
+      border: 1px solid rgba(245,160,10,.14);
+      color: rgba(226,226,234,.72);
+      transition: background .2s, border-color .2s, color .2s;
+      cursor: default;
+    }
+    .skill-chip:hover {
+      background: rgba(245,160,10,.13);
+      border-color: rgba(245,160,10,.35);
+      color: var(--text);
     }
     .skill-list {
       font-family: var(--font-b); font-size: .92rem;
@@ -553,7 +614,7 @@
     /* ── RECOMMENDATIONS ──────────────────────────────────────── */
     .rec-group-label {
       font-family: var(--font-m); font-size: .58rem; letter-spacing: .18em;
-      color: var(--muted); text-transform: uppercase; opacity: .6;
+      color: #c8c8de; text-transform: uppercase; opacity: .6;
       display: flex; align-items: center; gap: 1rem;
       margin-bottom: 1.6rem;
     }
@@ -593,7 +654,7 @@
     }
     .rec-quote {
       font-size: .875rem; line-height: 1.8;
-      color: var(--muted); margin-bottom: .9rem;
+      color: #c8c8de; margin-bottom: .9rem;
       position: relative; z-index: 1;
       display: -webkit-box; -webkit-line-clamp: 5;
       -webkit-box-orient: vertical; overflow: hidden;
@@ -630,7 +691,7 @@
     }
     .rec-title {
       font-family: var(--font-m); font-size: .6rem; letter-spacing: .06em;
-      color: var(--muted); line-height: 1.5;
+      color: #c8c8de; line-height: 1.5;
     }
     .rec-meta {
       font-family: var(--font-m); font-size: .55rem; letter-spacing: .09em;
@@ -656,7 +717,7 @@
     }
     .contact-email {
       font-family: var(--font-m); font-size: .8rem;
-      color: var(--muted); letter-spacing: .06em;
+      color: #c8c8de; letter-spacing: .06em;
     }
     .social-links { display: flex; gap: 1rem; flex-wrap: wrap; }
     .social-link {
@@ -664,7 +725,7 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      color: var(--muted); font-size: .95rem;
+      color: #c8c8de; font-size: .95rem;
       text-decoration: none;
       transition: border-color .2s, color .2s, background .2s, transform .2s;
     }
@@ -683,13 +744,13 @@
     }
     .footer-copy {
       font-family: var(--font-m); font-size: .6rem; letter-spacing: .08em;
-      color: var(--muted); text-transform: uppercase;
+      color: #c8c8de; text-transform: uppercase;
     }
     .footer-copy span { color: var(--amber); }
     .footer-links { display: flex; gap: 1.5rem; }
     .footer-links a {
       font-family: var(--font-m); font-size: .6rem; letter-spacing: .08em;
-      color: var(--muted); text-decoration: none; text-transform: uppercase;
+      color: #c8c8de; text-decoration: none; text-transform: uppercase;
       transition: color .2s;
     }
     .footer-links a:hover { color: var(--amber); }
@@ -718,8 +779,8 @@
       .tl-dot { display: none; }
       .tl-date, .tl-duration { padding-right: 0; }
       .contact-strip { flex-direction: column; gap: 2rem; align-items: flex-start; }
-      .skill-row { grid-template-columns: 1fr; gap: .4rem; }
-      .skill-cat { width: auto; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .skill-card-wide { grid-column: span 2; }
       .hero-eyebrow { font-size: .52rem; letter-spacing: .1em; white-space: nowrap; }
     }
   </style>
@@ -751,7 +812,7 @@
       </div>
     </li>
     <li class="nav-item">
-      <a href="https://www.flickr.com/photos/202163983@N08/" target="_blank" rel="noopener">Photography</a>
+      <a href="./../photography/index.html">Photography</a>
     </li>
   </ul>
   <a href="https://www.linkedin.com/in/shravankumarhiregoudar/" target="_blank" class="nav-btn">
@@ -787,8 +848,6 @@
     </div>
   </section>
 
-  <hr class="sec-divider">
-
   <!-- ── EXPERIENCE ─────────────────────────────────────────────── -->
   <section class="sec">
     <div class="reveal">
@@ -805,14 +864,19 @@
           <div class="tl-duration" id="li-duration"></div>
         </div>
         <div class="tl-card">
+          <div class="tl-logo-badge" style="--brand-shadow:rgba(10,102,194,0.6)">
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener">
+              <img src="./../wp-content/uploads/logos/LI-Logo.png" alt="LinkedIn"
+                   style="width:160px;height:auto;opacity:.3"
+                   onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'tl-logo-init',textContent:'in'}))">
+            </a>
+          </div>
           <div class="tl-company">LinkedIn</div>
           <div class="tl-role">AI/ML Engineer - Product Operations</div>
           <div class="tl-sub">New York, NY</div>
           <ul class="tl-bullets">
-            <li>Identify and eliminate product friction points using AI/ML, translating member pain signals into prioritized engineering action.</li>
-            <li>Built GenAI workflows for feedback ingestion, theming, and prioritization — replacing informal team agreements with a structured, data-driven alignment framework across R&D and leadership.</li>
-            <li>Drove fixes to AI-powered search through in-product guidance and enablement, resulting in a 90% reduction in support cases within one week and measurable gains in search efficiency and effectiveness KPIs.</li>
-            <li>Established product quality as a pillar-level business commitment, giving leadership a clear framework for "what to build" and scaling the approach across business lines to improve engagement, customer success, and revenue.</li>
+            <li>Built an 85%+ accurate GenAI feedback engine to synthesize multi-channel signals — including support cases, VCA, social media, and product surveys — into a holistic R&D framework; replaced informal team agreements with a data-driven alignment model that secured firm engineering commitments for high-priority feature roadmaps.</li>
+            <li>Engineered an AI/ML-driven "Friction-to-Action" pipeline that translates member pain signals into prioritized technical requirements; scaled this framework across business lines to establish product quality as a core business pillar, directly increasing engagement, customer success, and long-term revenue growth.</li>
           </ul>
           <div class="tl-tags">
             <span class="tl-tag">AI/ML</span>
@@ -835,6 +899,13 @@
           <div class="tl-duration">~3.5 Years</div>
         </div>
         <div class="tl-card">
+          <div class="tl-logo-badge" style="--brand-shadow:rgba(0,100,200,0.5)">
+            <a href="https://www.slalom.com" target="_blank" rel="noopener">
+              <img src="https://s7d9.scene7.com/is/content/slalom/slalom-logo-blue-RGB?fmt=webp-alpha&metadata=none"
+                   alt="Slalom" style="width:130px;height:auto;opacity:.3"
+                   onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'tl-logo-init',textContent:'Slalom'}))">
+            </a>
+          </div>
           <div class="tl-company">Slalom</div>
           <div class="tl-role">Consultant - Data Science</div>
           <div class="tl-sub">New York, NY</div>
@@ -865,6 +936,13 @@
           <div class="tl-duration">~1.5 Years</div>
         </div>
         <div class="tl-card">
+          <div class="tl-logo-badge" style="--brand-shadow:rgba(80,120,220,0.45)">
+            <a href="https://www.osiopt.com" target="_blank" rel="noopener">
+              <img src="https://cdn.prod.website-files.com/67d84c949113b05c1d552738/67db1260ce4ab6d86f0c64fe_osi_logo_173_x_45_black.svg"
+                   alt="Optimal Solutions Inc."
+                   style="width:180px;height:auto;filter:brightness(0) invert(1);opacity:.3">
+            </a>
+          </div>
           <div class="tl-company">Optimal Solutions Inc.</div>
           <div class="tl-role">Data Scientist</div>
           <div class="tl-sub">Bridgewater, NJ</div>
@@ -904,7 +982,7 @@
     </div><!-- /timeline -->
   </section>
 
-  <hr class="sec-divider">
+
 
   <!-- ── EDUCATION ───────────────────────────────────────────────── -->
   <section class="sec">
@@ -936,7 +1014,7 @@
     </div>
   </section>
 
-  <hr class="sec-divider">
+
 
   <!-- ── SKILLS ──────────────────────────────────────────────────── -->
   <section class="sec">
@@ -945,30 +1023,62 @@
       <h2 class="sec-title">Key Skills</h2>
     </div>
     <div class="skills-grid reveal">
-      <div class="skill-row">
+
+      <div class="skill-card skill-card-wide">
         <span class="skill-cat">AI / Data</span>
-        <span class="skill-list">Generative AI · Machine Learning · NLP · Predictive Analytics · Data Engineering · Statistics · A/B Testing · LLMs</span>
+        <div class="skill-chips">
+          <span class="skill-chip">Generative AI</span>
+          <span class="skill-chip">Machine Learning</span>
+          <span class="skill-chip">NLP</span>
+          <span class="skill-chip">LLMs</span>
+          <span class="skill-chip">Predictive Analytics</span>
+          <span class="skill-chip">Data Engineering</span>
+          <span class="skill-chip">Statistics</span>
+          <span class="skill-chip">A/B Testing</span>
+        </div>
       </div>
-      <div class="skill-row">
+
+      <div class="skill-card">
         <span class="skill-cat">Cloud</span>
-        <span class="skill-list">Azure · AWS · Databricks</span>
+        <div class="skill-chips">
+          <span class="skill-chip">Azure</span>
+          <span class="skill-chip">AWS</span>
+          <span class="skill-chip">Databricks</span>
+        </div>
       </div>
-      <div class="skill-row">
-        <span class="skill-cat">Frameworks</span>
-        <span class="skill-list">Power BI · Tableau · PySpark · Flask</span>
-      </div>
-      <div class="skill-row">
+
+      <div class="skill-card">
         <span class="skill-cat">Languages</span>
-        <span class="skill-list">Python · SQL · R</span>
+        <div class="skill-chips">
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">SQL</span>
+          <span class="skill-chip">R</span>
+        </div>
       </div>
-      <div class="skill-row">
+
+      <div class="skill-card">
+        <span class="skill-cat">Frameworks</span>
+        <div class="skill-chips">
+          <span class="skill-chip">Power BI</span>
+          <span class="skill-chip">Tableau</span>
+          <span class="skill-chip">PySpark</span>
+          <span class="skill-chip">Flask</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
         <span class="skill-cat">AI Applications</span>
-        <span class="skill-list">Cursor · Claude Code · GitHub Copilot</span>
+        <div class="skill-chips">
+          <span class="skill-chip">Cursor</span>
+          <span class="skill-chip">Claude Code</span>
+          <span class="skill-chip">GitHub Copilot</span>
+        </div>
       </div>
+
     </div>
   </section>
 
-  <hr class="sec-divider">
+
 
   <!-- ── CERTIFICATIONS ──────────────────────────────────────────── -->
   <section class="sec">
@@ -1001,13 +1111,31 @@
     </div>
   </section>
 
-  <hr class="sec-divider">
+
 
   <!-- ── RECOMMENDATIONS ────────────────────────────────────────── -->
   <section class="sec">
     <div class="reveal">
       <p class="sec-label">Colleagues &amp; Mentors</p>
       <h2 class="sec-title">Recommendations (on LinkedIn)</h2>
+    </div>
+
+    <p class="rec-group-label">LinkedIn</p>
+    <div class="rec-grid reveal">
+
+      <div class="rec-card">
+        <div class="rec-quote-mark">"</div>
+        <p class="rec-quote">Shravan quickly became an integral part of our team, and helped us make LinkedIn products better through applied AI and analytics. His ability to execute and growth mindset standout — he solutions and strategizes with agility, giving teams and partners a turboboost in unraveling the untold stories behind the data.</p>
+        <div class="rec-footer">
+          <div class="rec-avatar">JV</div>
+          <div class="rec-info">
+            <div class="rec-name">Javier Vivas</div>
+            <div class="rec-title">Analytics Leader, LinkedIn</div>
+            <div class="rec-meta">Direct Manager</div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <p class="rec-group-label">Slalom</p>
@@ -1112,7 +1240,7 @@
     </div>
   </section>
 
-  <hr class="sec-divider">
+
 
   <!-- ── CONTACT ─────────────────────────────────────────────────── -->
   <div class="contact-strip reveal">
@@ -1273,6 +1401,147 @@
   window.addEventListener('load', function () { document.body.style.opacity = '1'; });
   setTimeout(function () { document.body.style.opacity = '1'; }, 500);
 
+})();
+</script>
+
+<!-- ── Canvas constellation ───────────────────────────────────── -->
+<script>
+(function () {
+  'use strict';
+  const canvas = document.getElementById('cnv');
+  const ctx    = canvas.getContext('2d');
+  let W, H, pts;
+  const mouse = { x: -9999, y: -9999, active: false };
+
+  const COLORS = [
+    [0,   212, 245],  // cyan
+    [155,  93, 229],  // purple
+    [255, 112,  67],  // amber (rare)
+  ];
+
+  function rgb(ci, a) {
+    const [r,g,b] = COLORS[ci];
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+  }
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function mkPts() {
+    const n = Math.max(20, Math.floor(W * H / 35000));
+    pts = Array.from({ length: n }, function () {
+      return {
+        x:     Math.random() * W,
+        y:     Math.random() * H,
+        vx:    (Math.random() - .5) * .28,
+        vy:    (Math.random() - .5) * .28,
+        r:     Math.random() * 1.6 + .5,
+        a:     Math.random() * .5 + .38,
+        c:     Math.random() < .5 ? 0 : Math.random() < .65 ? 1 : 2,
+        pulse: Math.random() * Math.PI * 2,
+      };
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    const CONNECT = 155;
+    const ATTRACT = 160;
+
+    /* connections */
+    for (var i = 0; i < pts.length; i++) {
+      for (var j = i + 1; j < pts.length; j++) {
+        var dx = pts[i].x - pts[j].x;
+        var dy = pts[i].y - pts[j].y;
+        var d  = Math.sqrt(dx*dx + dy*dy);
+        if (d > CONNECT) continue;
+        var lineA = (1 - d / CONNECT) * .18;
+        var g = ctx.createLinearGradient(pts[i].x, pts[i].y, pts[j].x, pts[j].y);
+        g.addColorStop(0, rgb(pts[i].c, lineA));
+        g.addColorStop(1, rgb(pts[j].c, lineA));
+        ctx.beginPath();
+        ctx.moveTo(pts[i].x, pts[i].y);
+        ctx.lineTo(pts[j].x, pts[j].y);
+        ctx.strokeStyle = g;
+        ctx.lineWidth   = .5;
+        ctx.stroke();
+      }
+    }
+
+    /* mouse proximity lines — bright burst when cursor near */
+    if (mouse.active) {
+      for (var k = 0; k < pts.length; k++) {
+        var pdx = pts[k].x - mouse.x;
+        var pdy = pts[k].y - mouse.y;
+        var pd  = Math.sqrt(pdx*pdx + pdy*pdy);
+        if (pd > ATTRACT * 1.4) continue;
+        var la = (1 - pd / (ATTRACT * 1.4)) * .38;
+        ctx.beginPath();
+        ctx.moveTo(pts[k].x, pts[k].y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.strokeStyle = rgb(pts[k].c, la);
+        ctx.lineWidth = .4;
+        ctx.stroke();
+      }
+    }
+
+    /* particles */
+    for (var p of pts) {
+      p.pulse += .018;
+      var pa = p.a + Math.sin(p.pulse) * .12;
+
+      /* cursor attraction */
+      if (mouse.active) {
+        var mdx = mouse.x - p.x;
+        var mdy = mouse.y - p.y;
+        var md  = Math.sqrt(mdx*mdx + mdy*mdy);
+        if (md < ATTRACT && md > 1) {
+          var f = (1 - md / ATTRACT) * .018;
+          p.vx += (mdx / md) * f;
+          p.vy += (mdy / md) * f;
+        }
+      }
+
+      /* speed cap + damping */
+      var spd = Math.sqrt(p.vx*p.vx + p.vy*p.vy);
+      if (spd > 1.2) { p.vx *= 1.2/spd; p.vy *= 1.2/spd; }
+      p.vx *= .994; p.vy *= .994;
+
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) { p.vx *= -1; p.x = Math.max(0, Math.min(W, p.x)); }
+      if (p.y < 0 || p.y > H) { p.vy *= -1; p.y = Math.max(0, Math.min(H, p.y)); }
+
+      /* glow halo */
+      var gr = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 8);
+      gr.addColorStop(0, rgb(p.c, pa * .5));
+      gr.addColorStop(1, rgb(p.c, 0));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r * 8, 0, Math.PI * 2);
+      ctx.fillStyle = gr;
+      ctx.fill();
+
+      /* core dot */
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = rgb(p.c, pa);
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('mousemove', function (e) {
+    mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true;
+  });
+  window.addEventListener('mouseleave', function () { mouse.active = false; });
+
+  resize();
+  mkPts();
+  window.addEventListener('resize', function () { resize(); mkPts(); });
+  draw();
 })();
 </script>
 
