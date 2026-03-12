@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:medium.com)",
+      "WebFetch(domain:shravankumarhiregoudar.medium.com)",
+      "Bash(python3:*)",
+      "Bash(open /Users/shiregou/Documents/Offstage/Shravankumarhiregoudar.github.io/index.html)",
+      "Bash(grep -n \"flickr\\\\|Photography\" /Users/shiregou/Documents/Offstage/Shravankumarhiregoudar.github.io/blogs/index.html | head -10\ngrep -n \"flickr\\\\|Photography\" /Users/shiregou/Documents/Offstage/Shravankumarhiregoudar.github.io/publications/index.html | head -10)",
+      "Bash(curl -s \"https://www.flickr.com/services/oembed/?url=https://www.flickr.com/photos/202163983@N08/54819058954/&format=json\" 2>&1 | head -200)",
+      "Bash(curl -s \"https://www.flickr.com/services/oembed/?url=https://www.flickr.com/photos/202163983@N08/54819058954/&format=json&callback=_oe0\" 2>&1 | head -5)",
+      "Bash(open /Users/shiregou/Documents/Offstage/Shravankumarhiregoudar.github.io/photography/index.html)",
+      "Bash(git add:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
