@@ -415,6 +415,9 @@
       scroll-snap-type: y mandatory;
       -webkit-overflow-scrolling: touch;
     }
+    @media (max-width: 520px) {
+      #lb-scroll { inset: 0 0 40px 0; }
+    }
     #lb-scroll::-webkit-scrollbar { display: none; }
     #lb-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -552,12 +555,35 @@
       .hero-links { justify-content: flex-start; }
       #photo-count { text-align: left; }
       .contact-grid { grid-template-columns: repeat(2, 1fr); }
-      .lb-prev { left: 1rem; } .lb-next { right: 1rem; }
       .lb-info { padding: .7rem 1.2rem; }
-      .lb-hint { display: none; }
+      .lb-exif { max-width: 200px; }
+      /* Film frame ghost — scale down on tablet */
+      .hff-box { width: min(90%, 600px); }
+      .hff-edge-top, .hff-edge-bot { font-size: .32rem; }
     }
     @media (max-width: 520px) {
-      .lb-nav-btn { display: none; }
+      /* Single-column grid on phone */
+      .contact-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; padding: 2px; }
+      /* Hero */
+      .hero { padding: 5rem 1.2rem 1.8rem; gap: 1rem; }
+      .hero-title { font-size: clamp(2rem, 10vw, 3rem); }
+      /* Film frame ghost hidden on very small screens */
+      .hero-film-frame { display: none; }
+      /* Lightbox image — use full viewport */
+      .lb-slide img {
+        max-width: 100vw;
+        max-height: calc(100vh - 64px);
+      }
+      /* Info bar compact */
+      .lb-info { height: 40px; padding: 0 1rem; }
+      .lb-exif { display: none; }
+      .lb-counter { font-size: .48rem; }
+      /* Scroll hint compact */
+      #lb-scroll-hint { padding: 1.2rem 1.6rem; gap: .6rem; }
+      #lb-scroll-hint span { font-size: .5rem; }
+      .hint-wheel { width: 24px; height: 38px; }
+      /* Footer */
+      .site-footer { padding: 1.5rem 1.2rem; }
     }
   </style>
 </head>
@@ -702,58 +728,58 @@
 
   /* ── Gallery — local photos ─── */
   var photos = [
-    '../photos/1000005013.JPEG',
-    '../photos/13227.JPEG',
-    '../photos/13234.JPEG',
-    '../photos/14137.JPEG',
-    '../photos/14493.JPEG',
-    '../photos/14819.JPEG',
-    '../photos/15256.JPEG',
-    '../photos/15261.JPEG',
-    '../photos/15558.JPEG',
-    '../photos/3563.JPEG',
-    '../photos/3567.JPEG',
-    '../photos/3571.JPEG',
-    '../photos/B&W-1.JPG',
-    '../photos/B&W-20.JPG',
-    '../photos/B&W-5.JPG',
-    '../photos/DSC07266.JPG',
-    '../photos/DSC07459.JPG',
-    '../photos/DSC07737.JPG',
-    '../photos/IMG_0488.JPG',
-    '../photos/IMG_0494.JPG',
-    '../photos/IMG_0602.JPG',
-    '../photos/IMG_0971.JPG',
-    '../photos/IMG_0994.JPG',
-    '../photos/IMG_0996.JPG',
-    '../photos/IMG_1552.JPG',
-    '../photos/IMG_1633.JPG',
-    '../photos/IMG_1665.JPG',
-    '../photos/IMG_1713.JPG',
-    '../photos/IMG_1721 2.JPG',
-    '../photos/IMG_1785.JPG',
-    '../photos/IMG_1786.JPG',
-    '../photos/IMG_1790.JPG',
-    '../photos/IMG_1792.JPG',
-    '../photos/IMG_3866.JPG',
-    '../photos/IMG_5247.JPG',
-    '../photos/IMG_5437.JPG',
-    '../photos/IMG_7956.JPG',
-    '../photos/IMG_7971.JPG',
-    '../photos/IMG_8070.JPG',
-    '../photos/IMG_8159.JPG',
-    '../photos/IMG_8222.JPG',
-    '../photos/IMG_8408.JPG',
-    '../photos/IMG_8437.JPG',
-    '../photos/IMG_9785.JPG',
-    '../photos/IMG_9786.JPG',
-    '../photos/IMG_9791.JPG',
-    '../photos/IMG_9816.JPG',
-    '../photos/IMG_9824.JPG',
-    '../photos/IMG_9872.JPG',
-    '../photos/IMG_9945.JPG',
-    '../photos/IMG_9992.JPG',
-    '../photos/WY_00091.JPG'
+    '../assets/photography-photos/1000005013.JPEG',
+    '../assets/photography-photos/13227.JPEG',
+    '../assets/photography-photos/13234.JPEG',
+    '../assets/photography-photos/14137.JPEG',
+    '../assets/photography-photos/14493.JPEG',
+    '../assets/photography-photos/14819.JPEG',
+    '../assets/photography-photos/15256.JPEG',
+    '../assets/photography-photos/15261.JPEG',
+    '../assets/photography-photos/15558.JPEG',
+    '../assets/photography-photos/3563.JPEG',
+    '../assets/photography-photos/3567.JPEG',
+    '../assets/photography-photos/3571.JPEG',
+    '../assets/photography-photos/B&W-1.JPG',
+    '../assets/photography-photos/B&W-20.JPG',
+    '../assets/photography-photos/B&W-5.JPG',
+    '../assets/photography-photos/DSC07266.JPG',
+    '../assets/photography-photos/DSC07459.JPG',
+    '../assets/photography-photos/DSC07737.JPG',
+    '../assets/photography-photos/IMG_0488.JPG',
+    '../assets/photography-photos/IMG_0494.JPG',
+    '../assets/photography-photos/IMG_0602.JPG',
+    '../assets/photography-photos/IMG_0971.JPG',
+    '../assets/photography-photos/IMG_0994.JPG',
+    '../assets/photography-photos/IMG_0996.JPG',
+    '../assets/photography-photos/IMG_1552.JPG',
+    '../assets/photography-photos/IMG_1633.JPG',
+    '../assets/photography-photos/IMG_1665.JPG',
+    '../assets/photography-photos/IMG_1713.JPG',
+    '../assets/photography-photos/IMG_1721 2.JPG',
+    '../assets/photography-photos/IMG_1785.JPG',
+    '../assets/photography-photos/IMG_1786.JPG',
+    '../assets/photography-photos/IMG_1790.JPG',
+    '../assets/photography-photos/IMG_1792.JPG',
+    '../assets/photography-photos/IMG_3866.JPG',
+    '../assets/photography-photos/IMG_5247.JPG',
+    '../assets/photography-photos/IMG_5437.JPG',
+    '../assets/photography-photos/IMG_7956.JPG',
+    '../assets/photography-photos/IMG_7971.JPG',
+    '../assets/photography-photos/IMG_8070.JPG',
+    '../assets/photography-photos/IMG_8159.JPG',
+    '../assets/photography-photos/IMG_8222.JPG',
+    '../assets/photography-photos/IMG_8408.JPG',
+    '../assets/photography-photos/IMG_8437.JPG',
+    '../assets/photography-photos/IMG_9785.JPG',
+    '../assets/photography-photos/IMG_9786.JPG',
+    '../assets/photography-photos/IMG_9791.JPG',
+    '../assets/photography-photos/IMG_9816.JPG',
+    '../assets/photography-photos/IMG_9824.JPG',
+    '../assets/photography-photos/IMG_9872.JPG',
+    '../assets/photography-photos/IMG_9945.JPG',
+    '../assets/photography-photos/IMG_9992.JPG',
+    '../assets/photography-photos/WY_00091.JPG'
   ];
 
   /* Shuffle photos on every load (Fisher-Yates) */
