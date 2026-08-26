@@ -57,29 +57,15 @@
       color: var(--text);
       font-family: var(--font-b);
       overflow-x: hidden;
-      cursor: none;
+      cursor: auto;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── CUSTOM CURSOR ────────────────────────────────────────── */
-    #cur-dot {
-      position: fixed; width: 8px; height: 8px;
-      background: var(--cyan); border-radius: 50%;
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%,-50%);
-      transition: width .2s, height .2s, background .3s;
-      mix-blend-mode: screen;
-    }
-    #cur-ring {
-      position: fixed; width: 38px; height: 38px;
-      border: 1.5px solid rgba(0,212,245,.35);
-      border-radius: 50%; pointer-events: none; z-index: 9998;
-      transform: translate(-50%,-50%);
-      transition: width .4s var(--ease), height .4s var(--ease),
-                  border-color .3s, opacity .3s;
-    }
-    body.sh-hover #cur-dot  { width: 16px; height: 16px; background: var(--amber); }
-    body.sh-hover #cur-ring { width: 56px; height: 56px; border-color: rgba(255,112,67,.3); }
+    /* Custom cursor removed for performance */
+    
+    
+    body.sh-hover 
+    body.sh-hover 
 
     /* ── GRAIN ────────────────────────────────────────────────── */
     #sh-grain {
@@ -289,7 +275,7 @@
       transition: transform .4s var(--ease), border-color .35s, box-shadow .4s var(--ease);
       text-decoration: none;
       overflow: hidden;
-      cursor: none;
+      cursor: auto;
     }
     .article-card::before {
       content: '';
@@ -445,11 +431,7 @@
 </head>
 
 <body>
-  <!-- Custom Cursor -->
-  <div id="cur-dot"></div>
-  <div id="cur-ring"></div>
-
-  <!-- Film Grain (injected by sh-inject.js also, but we add our own for immediate display) -->
+  <!-- Custom Cursor --><!-- Film Grain (injected by sh-inject.js also, but we add our own for immediate display) -->
   <div id="sh-grain"></div>
 
   <!-- Neural Canvas -->

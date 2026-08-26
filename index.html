@@ -34,13 +34,13 @@
   <link rel="icon" href="./assets/images/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="./assets/images/favicon-180.png">
 
-  <!-- Fonts -->
+  <!-- Fonts (with async fallback) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome (local) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Font Awesome (CDN with crossorigin) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
 
   <style>
     /* ─── RESET ─────────────────────────────────────────────── */
@@ -76,45 +76,25 @@
       color: var(--text);
       font-family: var(--font-b);
       overflow-x: hidden;
-      cursor: none;
+      cursor: auto;
       -webkit-font-smoothing: antialiased;
+      will-change: scroll-position;
     }
 
-    /* ─── CUSTOM CURSOR ──────────────────────────────────────── */
-    #cur-dot {
-      position: fixed; width: 8px; height: 8px;
-      background: var(--cyan); border-radius: 50%;
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%,-50%);
-      transition: width .2s, height .2s, background .3s;
-      mix-blend-mode: screen;
-    }
-    #cur-ring {
-      position: fixed; width: 38px; height: 38px;
-      border: 1.5px solid rgba(0,212,245,.35);
-      border-radius: 50%; pointer-events: none; z-index: 9998;
-      transform: translate(-50%,-50%);
-      transition: width .4s var(--ease), height .4s var(--ease),
-                  border-color .3s, opacity .3s;
-    }
-    body.cursor-hover #cur-dot  { width: 16px; height: 16px; background: var(--amber); }
-    body.cursor-hover #cur-ring { width: 56px; height: 56px; border-color: rgba(255,112,67,.3); }
-    body.cursor-hidden #cur-dot, body.cursor-hidden #cur-ring { opacity: 0; }
+    /* ─── CUSTOM CURSOR (REMOVED FOR PERFORMANCE) ──────────────────────────────────────── */
+    /* Performance optimization: Using browser's native cursor instead of custom JS-driven cursor */
 
-    /* ─── GRAIN ──────────────────────────────────────────────── */
+     /* ─── GRAIN (OPTIMIZED) ──────────────────────────────────────────────── */
     #grain {
       position: fixed; inset: 0; z-index: 1;
-      pointer-events: none; opacity: .025;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
-      animation: grain 0.4s steps(1) infinite;
+      pointer-events: none; opacity: .015;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+      will-change: auto;
     }
     @keyframes grain {
       0%   { transform: translate(0,0); }
-      20%  { transform: translate(-2%,2%); }
-      40%  { transform: translate(3%,-1%); }
-      60%  { transform: translate(-1%,3%); }
-      80%  { transform: translate(2%,-3%); }
-      100% { transform: translate(-3%,1%); }
+      50%  { transform: translate(1%,-1%); }
+      100% { transform: translate(-1%,1%); }
     }
 
     /* ─── CANVAS ─────────────────────────────────────────────── */
@@ -124,32 +104,32 @@
       z-index: 0; pointer-events: none;
     }
 
-    /* ─── RADIAL GLOWS (behind hero) ─────────────────────────── */
+    /* ─── RADIAL GLOWS (OPTIMIZED) ─────────────────────────── */
     .glow-1, .glow-2, .glow-3 {
       position: fixed; border-radius: 50%;
       pointer-events: none; z-index: 0;
-      filter: blur(100px); animation: breathe 8s ease-in-out infinite;
+      filter: blur(100px);
+      contain: layout style paint;
     }
     .glow-1 {
       width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(0,212,245,.06), transparent 70%);
+      background: radial-gradient(circle, rgba(0,212,245,.04), transparent 70%);
       top: -100px; right: -100px;
     }
     .glow-2 {
       width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(255,112,67,.05), transparent 70%);
+      background: radial-gradient(circle, rgba(255,112,67,.03), transparent 70%);
       bottom: -50px; left: -80px;
-      animation-delay: -3s; animation-direction: reverse;
     }
     .glow-3 {
       width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(155,93,229,.04), transparent 70%);
+      background: radial-gradient(circle, rgba(155,93,229,.02), transparent 70%);
       top: 40%; left: 40%;
-      animation-delay: -5s;
     }
     @keyframes breathe {
-      0%, 100% { opacity: .7; transform: scale(1); }
-      50%       { opacity: 1;  transform: scale(1.15); }
+      0%, 100% { opacity: .5; }
+      50%       { opacity: .7; }
+    }
     }
 
     /* ─── NAV ────────────────────────────────────────────────── */
@@ -762,10 +742,9 @@
 </head>
 
 <body>
-  <!-- Custom Cursor -->
-  <div id="cur-dot"></div>
-  <div id="cur-ring"></div>
+</head>
 
+<body>
   <!-- Film Grain -->
   <div id="grain"></div>
 
@@ -1084,31 +1063,6 @@
     window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
 
     resize(); mkPts(); draw(0);
-
-
-    /* ─── CUSTOM CURSOR ──────────────────────────────── */
-    const dot  = document.getElementById('cur-dot');
-    const ring = document.getElementById('cur-ring');
-    let cx = 0, cy = 0, rx = 0, ry = 0;
-
-    document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
-    document.addEventListener('mouseleave', () => document.body.classList.add('cursor-hidden'));
-    document.addEventListener('mouseenter', () => document.body.classList.remove('cursor-hidden'));
-
-    (function tickCursor() {
-      dot.style.left = cx + 'px';
-      dot.style.top  = cy + 'px';
-      rx += (cx - rx) * .13;
-      ry += (cy - ry) * .13;
-      ring.style.left = rx + 'px';
-      ring.style.top  = ry + 'px';
-      requestAnimationFrame(tickCursor);
-    })();
-
-    document.querySelectorAll('a, button, .card').forEach(el => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-    });
 
 
     /* ─── TYPEWRITER ─────────────────────────────────── */
