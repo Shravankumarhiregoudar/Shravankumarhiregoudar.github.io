@@ -136,12 +136,12 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 1.6rem 4rem;
-      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      padding: 1.2rem 4rem;
+      display: flex; align-items: center; gap: 3rem;
       transition: background .5s, backdrop-filter .5s, padding .4s;
     }
-    .nav-links { justify-self: center; }
-    .nav-btn   { justify-self: end; }
+    .nav-links { justify-self: auto; margin: 0; flex: 1; }
+    .nav-btn   { justify-self: auto; margin-left: auto; }
     nav.stuck {
       padding: 1rem 4rem;
       background: rgba(5,5,10,.85);
@@ -150,9 +150,10 @@
     }
 
     .nav-logo {
-      font-family: var(--font-h); font-size: 1.5rem; font-weight: 700;
+      font-family: var(--font-h); font-size: 1rem; font-weight: 700;
       letter-spacing: -.02em; color: var(--text); text-decoration: none;
       position: relative; display: flex; align-items: center; gap: .5rem;
+      white-space: nowrap;
     }
     .nav-logo-dot {
       width: 6px; height: 6px; border-radius: 50%;
