@@ -995,21 +995,26 @@
   <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
   <script>
   (function () {
-    /* ── Custom cursor ── */
-    var dot  = document.getElementById('cur-dot');
-    var ring = document.getElementById('cur-ring');
-    var cx = 0, cy = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', function(e) {
-      cx = e.clientX; cy = e.clientY;
-      dot.style.left = cx + 'px'; dot.style.top = cy + 'px';
-    });
-    document.addEventListener('mouseleave', function() { dot.style.opacity='0'; ring.style.opacity='0'; });
-    document.addEventListener('mouseenter', function() { dot.style.opacity=''; ring.style.opacity=''; });
-    (function tick() {
-      rx += (cx - rx) * 0.13; ry += (cy - ry) * 0.13;
-      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-      requestAnimationFrame(tick);
-    })();
+    /* ── Page entry fade (first, so blank screen never sticks) ── */
+    document.body.style.opacity = '1';
+
+    /* ── Custom cursor (optional elements) ── */
+    var dot  = document.getElementById("cur-dot");
+    var ring = document.getElementById("cur-ring");
+    if (dot && ring) {
+      var cx = 0, cy = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', function(e) {
+        cx = e.clientX; cy = e.clientY;
+        dot.style.left = cx + 'px'; dot.style.top = cy + 'px';
+      });
+      document.addEventListener('mouseleave', function() { dot.style.opacity='0'; ring.style.opacity='0'; });
+      document.addEventListener('mouseenter', function() { dot.style.opacity=''; ring.style.opacity=''; });
+      (function tick() {
+        rx += (cx - rx) * 0.13; ry += (cy - ry) * 0.13;
+        ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+        requestAnimationFrame(tick);
+      })();
+    }
     document.querySelectorAll('a, button').forEach(function(el) {
       el.addEventListener('mouseenter', function() { document.body.classList.add('sh-hover'); });
       el.addEventListener('mouseleave', function() { document.body.classList.remove('sh-hover'); });
@@ -1017,13 +1022,9 @@
 
     /* ── Sticky nav ── */
     var nav = document.getElementById('site-header');
-    window.addEventListener('scroll', function() {
+    if (nav) window.addEventListener('scroll', function() {
       nav.classList.toggle('sh-stuck', window.scrollY > 40);
     }, { passive: true });
-
-    /* ── Page entry fade ── */
-    window.addEventListener('load', function() { document.body.style.opacity = '1'; });
-    setTimeout(function() { document.body.style.opacity = '1'; }, 500);
 
     /* ── Scroll reveal ── */
     var io = new IntersectionObserver(function(entries) {
