@@ -44,7 +44,7 @@
       color: var(--film);
       font-family: var(--font-b);
       overflow-x: hidden;
-      cursor: none;
+      cursor: auto;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -340,7 +340,7 @@
       position: relative;
       aspect-ratio: 3 / 2;
       overflow: hidden;
-      cursor: none;
+      cursor: auto;
       background: #16121a;
     }
     .photo-item img {
@@ -500,7 +500,7 @@
       background: rgba(7,6,10,.65);
       color: rgba(240,232,208,.55); font-size: .8rem;
       display: flex; align-items: center; justify-content: center;
-      cursor: none; transition: color .2s, border-color .2s, transform .25s;
+      cursor: auto; transition: color .2s, border-color .2s, transform .25s;
     }
     .lb-close:hover { color: var(--amber); border-color: rgba(212,149,74,.3); transform: rotate(90deg); }
 
@@ -592,8 +592,6 @@
 <body>
 
 <div id="sh-grain"></div>
-<div id="cur-dot"></div>
-<div id="cur-ring"></div>
 
 <!-- ── NAV ─────────────────────────────────────────────────────── -->
 <nav id="nav">
