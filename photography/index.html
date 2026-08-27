@@ -697,29 +697,7 @@
 (function () {
   'use strict';
 
-  /* ── Cursor ─── */
-  var dot  = document.getElementById('cur-dot');
-  var ring = document.getElementById('cur-ring');
-  var cx = 0, cy = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', function (e) {
-    cx = e.clientX; cy = e.clientY;
-    dot.style.left  = cx + 'px'; dot.style.top  = cy + 'px';
-  });
-  document.addEventListener('mouseleave', function () { dot.style.opacity = '0'; ring.style.opacity = '0'; });
-  document.addEventListener('mouseenter', function () { dot.style.opacity = ''; ring.style.opacity = ''; });
-  (function tick() {
-    rx += (cx - rx) * 0.13; ry += (cy - ry) * 0.13;
-    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-    requestAnimationFrame(tick);
-  })();
-
-  /* Enlarge dot when hovering photos */
-  document.getElementById('contact-grid').addEventListener('mouseover', function (e) {
-    if (e.target.closest('.photo-item')) dot.classList.add('zoom');
-  });
-  document.getElementById('contact-grid').addEventListener('mouseout', function (e) {
-    if (e.target.closest('.photo-item')) dot.classList.remove('zoom');
-  });
+  /* ── Cursor (removed - using system cursor) ─── */
 
   /* ── Sticky nav ─── */
   window.addEventListener('scroll', function () {
